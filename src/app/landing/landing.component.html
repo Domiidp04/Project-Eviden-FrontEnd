@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-3">
+  <h2>Datos obtenidos</h2>
+
+  <div *ngIf="userInfo">
+    <!-- Mostrar información del usuario -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Actualizar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ userInfo.username }}</td>
+          <td>{{ userInfo.email }}</td>
+          <td>
+            <button class="btn btn-primary">Actualizar</button>
+         </td>
+         <td>
+          <button class="btn btn-danger" (click)="eliminarUsuario(userInfo.id)">Eliminar</button>
+         </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="usersList && usersList.length > 0">
+    <!-- Mostrar lista completa de usuarios -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Actualizar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of usersList">
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="actualizarUsuario(user.id)">Actualizar</button>
+         </td>
+         <td>
+           <button class="btn btn-danger" (click)="eliminarUsuarioArray(user.id)">Eliminar</button>
+         </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<app-footer></app-footer>
